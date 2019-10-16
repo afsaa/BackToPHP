@@ -1,5 +1,36 @@
 <?php
-$hola = "Hola Mundo";
+// Ejercicio 1
+$arreglo = [
+
+    'keyStr1' => 'lado',
+    0 => 'ledo',
+
+    'keyStr2' => 'lido',
+    1 => 'lodo',
+    2 => 'ludo'
+
+];
+foreach ($arreglo as $value) {
+    echo $value . ", ";
+    if ($value === end($arreglo)) {
+        echo " decirlo al revés lo dudo. <br>";
+    }
+}
+// Ejercicio 2
+$paises = [
+    "Colombia" => ["Pereira", "Medellín", "Bogotá"],
+    "Brasil" => ["Sao Pablo", "Salvador Bahía", "Rio de Janeiro"],
+    "Argentina" => ["Buenos Aires", "La Plata", "Rosario"],
+    "Chile" => ["La Serena", "Santiago", "Antofagasta"],
+    "Perú" => ["Lima", "Cusco", "Piura"],
+];
+
+foreach ($paises as $pais => $ciudades) {
+    echo "<br><strong>{$pais}</strong>: ";
+    foreach ($ciudades as $ciudad) {
+        echo "{$ciudad} ";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -13,7 +44,7 @@ $hola = "Hola Mundo";
 
 <body>
     <div>
-        <h1>Andrés Saa <?php echo $hola ?></h1>
+        <h1>Andrés Saa</h1>
         <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum incidunt ipsam ullam est ipsum autem.</h3>
     </div>
     <div>
