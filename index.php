@@ -31,6 +31,18 @@ foreach ($paises as $pais => $ciudades) {
         echo "{$ciudad} ";
     }
 }
+// Ejercicio 3
+$valores = [23, 54, 32, 67, 34, 78, 98, 56, 21, 34, 57, 92, 12, 5, 61];
+rsort($valores);
+echo "<br><br> Valores máximos: ";
+for ($i = 0; $i < 3; $i++) {
+    echo "{$valores[$i]}, ";
+}
+sort($valores);
+echo "<br> Valores mínimos: ";
+for ($i = 0; $i < 3; $i++) {
+    echo "{$valores[$i]}, ";
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
