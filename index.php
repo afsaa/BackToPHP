@@ -1,48 +1,5 @@
 <?php
-// Ejercicio 1
-$arreglo = [
-
-    'keyStr1' => 'lado',
-    0 => 'ledo',
-
-    'keyStr2' => 'lido',
-    1 => 'lodo',
-    2 => 'ludo'
-
-];
-foreach ($arreglo as $value) {
-    echo $value . ", ";
-    if ($value === end($arreglo)) {
-        echo " decirlo al revés lo dudo. <br>";
-    }
-}
-// Ejercicio 2
-$paises = [
-    "Colombia" => ["Pereira", "Medellín", "Bogotá"],
-    "Brasil" => ["Sao Pablo", "Salvador Bahía", "Rio de Janeiro"],
-    "Argentina" => ["Buenos Aires", "La Plata", "Rosario"],
-    "Chile" => ["La Serena", "Santiago", "Antofagasta"],
-    "Perú" => ["Lima", "Cusco", "Piura"],
-];
-
-foreach ($paises as $pais => $ciudades) {
-    echo "<br><strong>{$pais}</strong>: ";
-    foreach ($ciudades as $ciudad) {
-        echo "{$ciudad} ";
-    }
-}
-// Ejercicio 3
-$valores = [23, 54, 32, 67, 34, 78, 98, 56, 21, 34, 57, 92, 12, 5, 61];
-rsort($valores);
-echo "<br><br> Valores máximos: ";
-for ($i = 0; $i < 3; $i++) {
-    echo "{$valores[$i]}, ";
-}
-sort($valores);
-echo "<br> Valores mínimos: ";
-for ($i = 0; $i < 3; $i++) {
-    echo "{$valores[$i]}, ";
-}
+include("jobs.php");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -61,12 +18,14 @@ for ($i = 0; $i < 3; $i++) {
     </div>
     <div>
         <h2>Skills and Roles</h2>
-        <h3>WebView Developer</h3>
-        <h4>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et, quod sint est accusantium placeat nisi repellendus asperiores modi quibusdam ratione, molestias quidem libero velit, voluptas totam ullam dignissimos nulla unde.</h4>
-        <h3>React Developer</h3>
-        <h4>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et, quod sint est accusantium placeat nisi repellendus asperiores modi quibusdam ratione, molestias quidem libero velit, voluptas totam ullam dignissimos nulla unde.</h4>
-        <h3>Frontend Developer</h3>
-        <h4>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et, quod sint est accusantium placeat nisi repellendus asperiores modi quibusdam ratione, molestias quidem libero velit, voluptas totam ullam dignissimos nulla unde.</h4>
+        <?php
+        foreach ($jobs as $job) {
+            if ($job->visible === true) {
+                echo "<h3>{$job->tittle}</h3>";
+                echo "<h4>{$job->description}</h4>";
+            }
+        }
+        ?>
     </div>
 </body>
 
