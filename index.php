@@ -21,8 +21,8 @@ include("jobs.php");
         <?php
         foreach ($jobs as $job) {
             if ($job->visible === true) {
-                echo "<h3>{$job->tittle}</h3>";
-                echo "<h4>{$job->description}</h4>";
+                echo "<h3>{$job->getTittle()}</h3>";
+                echo "<h4>{$job->getDescription()}</h4>";
             }
         }
         ?>

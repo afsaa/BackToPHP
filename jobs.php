@@ -2,23 +2,33 @@
 // Objetos
 class Job
 {
-    public $tittle;
-    public $description;
+    private $tittle;
+    private $description;
     public $visible = true;
+
+    public function __construct($tittle, $description)
+    {
+        $this->tittle = $tittle;
+        $this->description = $description;
+    }
+
+    public function getTittle()
+    {
+        return $this->tittle;
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
 }
 
-$job1 = new Job();
-$job1->tittle = "Webview Developer";
-$job1->description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore odit voluptas maxime cumque neque nemo officia ratione a. Soluta ducimus eum dolores et fugiat labore nulla, dolor itaque cum error?";
+$job1 = new Job("Webview Developer", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore odit voluptas maxime cumque neque nemo officia ratione a. Soluta ducimus eum dolores et fugiat labore nulla, dolor itaque cum error?");
 $job1->visible = false;
 
-$job2 = new Job();
-$job2->tittle = "React Developer";
-$job2->description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, eaque recusandae quae deleniti eum sunt?";
+$job2 = new Job("React Developer", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, eaque recusandae quae deleniti eum sunt?");
 
-$job3 = new Job();
-$job3->tittle = "Frontend Developer";
-$job3->description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum dignissimos aut quod ex numquam in aspernatur, cupiditate autem pariatur labore sint rem reprehenderit animi provident.";
+$job3 = new Job("Frontend Developer", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum dignissimos aut quod ex numquam in aspernatur, cupiditate autem pariatur labore sint rem reprehenderit animi provident.");
 
 $jobs = [
     $job1,
