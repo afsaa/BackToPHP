@@ -1,6 +1,6 @@
 <?php
-require "app/Models/jobs.php";
-require "app/Models/projects.php";
+require "jobs.php";
+require "projects.php";
 ?>
 <!DOCTYPE html>
 <html lang="es">
