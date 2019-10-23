@@ -2,19 +2,19 @@
 
 class BaseElement
 {
-    private $tittle;
-    private $description;
+    protected $title;
+    protected $description;
     public $visible = true;
 
-    public function __construct($tittle, $description)
+    public function __construct($title, $description)
     {
-        $this->tittle = $tittle;
+        $this->title = $title;
         $this->description = $description;
     }
 
-    public function getTittle()
+    public function getTitle()
     {
-        return $this->tittle;
+        return $this->title;
     }
 
     public function getDescription()

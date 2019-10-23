@@ -1,5 +1,6 @@
 <?php
 require "app/Models/jobs.php";
+require "app/Models/projects.php";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -25,8 +26,9 @@ require "app/Models/jobs.php";
             <?php
             foreach ($jobs as $job) {
                 if ($job->visible === true) {
-                    echo "<h3>{$job->getTittle()}</h3>";
+                    echo "<h3>{$job->getTitle()}</h3>";
                     echo "<h4>{$job->getDescription()}</h4>";
+                    echo "<br><hr>";
                 }
             }
             ?>
@@ -38,8 +40,16 @@ require "app/Models/jobs.php";
             <h3>JavaScript</h3>
         </div>
     </div>
-    <div class="container">
-        <h2>Projects</h2>
+    <div class="container-fluid">
+        <h2 class="text-center">Projects</h2>
+        <?php
+        foreach ($projects as $project) {
+            echo "<h3>{$project->getTitle()}</h3>";
+            echo "<h4>{$project->getDescription()}</h4>";
+            echo "<h4>{$project->getProjectRole()}</h4>";
+            echo "<br>";
+        }
+        ?>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

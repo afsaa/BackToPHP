@@ -1,6 +1,7 @@
 <?php
 
-require "BaseElement.php";
+require_once "BaseElement.php";
+require "Job.php";
 
 $job1 = new BaseElement("Webview Developer", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore odit voluptas maxime cumque neque nemo officia ratione a. Soluta ducimus eum dolores et fugiat labore nulla, dolor itaque cum error?");
 $job1->visible = false;
