@@ -2,7 +2,7 @@
 
 use App\Models\Job;
 
-require "app/Models/Job.php";
+require_once "vendor/autoload.php";
 
 $job1 = new Job("Webview Developer", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore odit voluptas maxime cumque neque nemo officia ratione a. Soluta ducimus eum dolores et fugiat labore nulla, dolor itaque cum error?");
 $job1->visible = false;
