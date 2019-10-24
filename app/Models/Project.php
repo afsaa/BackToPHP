@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
-class Project extends BaseElement
-{
-    private $projectRole;
+use Illuminate\Database\Eloquent\Model;
 
-    function __construct($title, $description, $projectRole)
+class Project extends Model
+{
+    protected $table = 'projects';
+
+    /*function __construct($title, $description, $projectRole)
     {
         parent::__construct($title, $description);
         $this->projectRole = $projectRole;
@@ -15,5 +17,5 @@ class Project extends BaseElement
     public function getProjectRole()
     {
         return $this->projectRole;
-    }
+    }*/
 }

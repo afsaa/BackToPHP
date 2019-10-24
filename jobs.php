@@ -2,7 +2,7 @@
 
 use App\Models\Job;
 
-function printElement()
+function printJobs()
 {
     $jobs = Job::all();
     foreach ($jobs as $job) {

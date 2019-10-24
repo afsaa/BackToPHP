@@ -46,7 +46,7 @@ $capsule->bootEloquent();
         <div class="col-md-8">
             <h2 class="text-center">Jobs</h2>
             <?php
-            printElement();
+            printJobs();
             ?>
         </div>
         <div class="col-md-4">
@@ -59,12 +59,7 @@ $capsule->bootEloquent();
     <div class="container-fluid">
         <h2 class="text-center">Projects</h2>
         <?php
-        foreach ($projects as $project) {
-            echo "<h3>{$project->getTitle()}</h3>";
-            echo "<h4>{$project->getDescription()}</h4>";
-            echo "<h4>{$project->getProjectRole()}</h4>";
-            echo "<br>";
-        }
+        printProjects();
         ?>
     </div>
 
