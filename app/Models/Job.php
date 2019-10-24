@@ -2,5 +2,9 @@
 
 namespace App\Models;
 
-class Job extends BaseElement
-{ }
+use Illuminate\Database\Eloquent\Model;
+
+class Job extends Model
+{
+    protected $table = "jobs";
+}
