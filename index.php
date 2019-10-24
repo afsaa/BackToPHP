@@ -1,6 +1,28 @@
 <?php
 require "jobs.php";
 require "projects.php";
+require_once 'vendor/autoload.php';
+
+use Illuminate\Database\Capsule\Manager as Capsule;
+
+$capsule = new Capsule;
+
+$capsule->addConnection([
+    'driver'    => 'mysql',
+    'host'      => 'localhost',
+    'database'  => 'curso-php',
+    'username'  => 'root',
+    'password'  => '',
+    'charset'   => 'utf8',
+    'collation' => 'utf8_unicode_ci',
+    'prefix'    => '',
+]);
+
+// Make this Capsule instance available globally via static methods... (optional)
+$capsule->setAsGlobal();
+
+// Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
+$capsule->bootEloquent();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -24,13 +46,7 @@ require "projects.php";
         <div class="col-md-8">
             <h2 class="text-center">Jobs</h2>
             <?php
-            foreach ($jobs as $job) {
-                if ($job->visible === true) {
-                    echo "<h3>{$job->getTitle()}</h3>";
-                    echo "<h4>{$job->getDescription()}</h4>";
-                    echo "<br><hr>";
-                }
-            }
+            printElement();
             ?>
         </div>
         <div class="col-md-4">
