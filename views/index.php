@@ -1,7 +1,3 @@
-<?php
-require "jobs.php";
-require "projects.php";
-?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -24,7 +20,7 @@ require "projects.php";
         <div class="col-md-8">
             <h2 class="text-center">Jobs</h2>
             <?php
-            printJobs();
+            printElement($jobs);
             ?>
         </div>
         <div class="col-md-4">
@@ -37,7 +33,7 @@ require "projects.php";
     <div class="container-fluid">
         <h2 class="text-center">Projects</h2>
         <?php
-        printProjects();
+        printElement($projects);
         ?>
     </div>
 

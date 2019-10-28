@@ -38,13 +38,32 @@ $request = Zend\Diactoros\ServerRequestFactory::fromGlobals(
 
 $routerContainer = new RouterContainer();
 $map = $routerContainer->getMap();
-$map->get('index', '/RepasoPHP/', '../index.php');
+$map->get('index', '/RepasoPHP/', [
+    'controller' => 'App\Controllers\IndexController',
+    'action' => 'indexAction'
+]);
 $map->get('addJobs', '/RepasoPHP/jobs/add', '../addJob.php');
 
 $matcher = $routerContainer->getMatcher();
 $route = $matcher->match($request);
+
+function printElement($elements)
+{
+    foreach ($elements as $element) {
+        echo "<h3>{$element->title}</h3>";
+        echo "<h4>{$element->description}</h4>";
+        echo "<h4>{$element->projectRole}</h4>";
+        echo "<br>";
+    }
+}
+
 if (!$route) {
     echo 'No se encontró la ruta';
 } else {
-    require $route->handler;
+    $handlerData = $route->handler;
+    $controllerName = $handlerData['controller'];
+    $actionName = $handlerData['action'];
+
+    $controller = new $controllerName;
+    $controller->$actionName();
 }
