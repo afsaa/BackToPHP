@@ -10,6 +10,7 @@ class IndexController
     {
         $jobs = Job::all();
         $projects = Project::all();
+
         include '../views/index.php';
     }
 }
