@@ -54,16 +54,6 @@ $map->post('saveJobs', '/RepasoPHP/jobs/add', [
 $matcher = $routerContainer->getMatcher();
 $route = $matcher->match($request);
 
-function printElement($elements)
-{
-    foreach ($elements as $element) {
-        echo "<h3>{$element->title}</h3>";
-        echo "<h4>{$element->description}</h4>";
-        echo "<h4>{$element->projectRole}</h4>";
-        echo "<br>";
-    }
-}
-
 if (!$route) {
     echo 'No se encontró la ruta';
 } else {
@@ -72,5 +62,7 @@ if (!$route) {
     $actionName = $handlerData['action'];
 
     $controller = new $controllerName;
-    $controller->$actionName($request);
+    $response = $controller->$actionName($request);
+
+    echo $response->getBody();
 }
