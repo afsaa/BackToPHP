@@ -46,16 +46,24 @@ $map->get('addJobs', '/RepasoPHP/jobs/add', [
     'controller' => 'App\Controllers\JobsController',
     'action' => 'getAddJobAction'
 ]);
+$map->get('addUser', '/RepasoPHP/users/add', [
+    'controller' => 'App\Controllers\UsersController',
+    'action' => 'getAddUserAction'
+]);
 $map->post('saveJobs', '/RepasoPHP/jobs/add', [
     'controller' => 'App\Controllers\JobsController',
     'action' => 'getAddJobAction'
+]);
+$map->post('saveUser', '/RepasoPHP/users/add', [
+    'controller' => 'App\Controllers\UsersController',
+    'action' => 'getAddUserAction'
 ]);
 
 $matcher = $routerContainer->getMatcher();
 $route = $matcher->match($request);
 
 if (!$route) {
-    echo 'No se encontró la ruta';
+    echo 'Route not found';
 } else {
     $handlerData = $route->handler;
     $controllerName = $handlerData['controller'];
