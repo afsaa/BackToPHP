@@ -68,6 +68,10 @@ $map->post('loginUser', '/RepasoPHP/login', [
     'controller' => 'App\Controllers\UsersController',
     'action' => 'loginUser'
 ]);
+$map->get('logoutUser', '/RepasoPHP/logout', [
+    'controller' => 'App\Controllers\UsersController',
+    'action' => 'logoutUser'
+]);
 
 $matcher = $routerContainer->getMatcher();
 $route = $matcher->match($request);
