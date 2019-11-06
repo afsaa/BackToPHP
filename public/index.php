@@ -9,6 +9,8 @@ require_once '../vendor/autoload.php';
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Aura\Router\RouterContainer;
 
+session_start();
+
 $capsule = new Capsule;
 
 $capsule->addConnection([
@@ -57,6 +59,14 @@ $map->post('saveJobs', '/RepasoPHP/jobs/add', [
 $map->post('saveUser', '/RepasoPHP/users/add', [
     'controller' => 'App\Controllers\UsersController',
     'action' => 'getAddUserAction'
+]);
+$map->get('login', '/RepasoPHP/login', [
+    'controller' => 'App\Controllers\UsersController',
+    'action' => 'loginUser'
+]);
+$map->post('loginUser', '/RepasoPHP/login', [
+    'controller' => 'App\Controllers\UsersController',
+    'action' => 'loginUser'
 ]);
 
 $matcher = $routerContainer->getMatcher();
