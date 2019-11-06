@@ -46,11 +46,13 @@ $map->get('index', '/RepasoPHP/', [
 ]);
 $map->get('addJobs', '/RepasoPHP/jobs/add', [
     'controller' => 'App\Controllers\JobsController',
-    'action' => 'getAddJobAction'
+    'action' => 'getAddJobAction',
+    'protected' => 'true'
 ]);
 $map->get('addUser', '/RepasoPHP/users/add', [
     'controller' => 'App\Controllers\UsersController',
-    'action' => 'getAddUserAction'
+    'action' => 'getAddUserAction',
+    'protected' => 'true'
 ]);
 $map->post('saveJobs', '/RepasoPHP/jobs/add', [
     'controller' => 'App\Controllers\JobsController',
@@ -61,16 +63,17 @@ $map->post('saveUser', '/RepasoPHP/users/add', [
     'action' => 'getAddUserAction'
 ]);
 $map->get('login', '/RepasoPHP/login', [
-    'controller' => 'App\Controllers\UsersController',
+    'controller' => 'App\Controllers\AdminController',
     'action' => 'loginUser'
 ]);
-$map->post('loginUser', '/RepasoPHP/login', [
-    'controller' => 'App\Controllers\UsersController',
+$map->post('adminLogin', '/RepasoPHP/admin', [
+    'controller' => 'App\Controllers\AdminController',
     'action' => 'loginUser'
 ]);
-$map->get('logoutUser', '/RepasoPHP/logout', [
-    'controller' => 'App\Controllers\UsersController',
-    'action' => 'logoutUser'
+$map->get('adminLogout', '/RepasoPHP/logout', [
+    'controller' => 'App\Controllers\AdminController',
+    'action' => 'logoutUser',
+    'protected' => 'true'
 ]);
 
 $matcher = $routerContainer->getMatcher();
@@ -82,9 +85,16 @@ if (!$route) {
     $handlerData = $route->handler;
     $controllerName = $handlerData['controller'];
     $actionName = $handlerData['action'];
+    $protectedPage = isset($handlerData['protected']);
 
     $controller = new $controllerName;
     $response = $controller->$actionName($request);
 
-    echo $response->getBody();
+    if ($protectedPage && isset($_SESSION['userEmail'])) {
+        echo $response->getBody();
+    } elseif (!$protectedPage) {
+        echo $response->getBody();
+    } else {
+        echo 'Protected page';
+    }
 }
