@@ -3,11 +3,22 @@
 namespace App\Controllers;
 
 use App\Models\User;
+use Sirius\Validation\Validator;
 
-class AdminController extends BaseController
+class AuthController extends BaseController
 {
-    public function loginUser($request)
+    public function getLogin()
     {
+        return $this->renderHTML('login.twig');
+    }
+
+    public function postLogin($request)
+    {
+        $validator = new Validator();
+        $validator->add('email', 'required');
+        $validator->add('email', 'email');
+        $validator->add('password', 'required');
+
         if ($request->getMethod() == 'POST') {
             $postData = $request->getParsedBody();
             $allUsers = User::all();
@@ -16,8 +27,12 @@ class AdminController extends BaseController
                     $_SESSION['userEmail'] = $postData['email'];
                     return $this->renderHTML('admin.twig');
                 } else {
-                    header("Location:login");
-                    echo 'Invalid credentials';
+                    //header("Location:login");
+                    $validator->addMessage('No Credentials', 'Invalid credentials, please try again.');
+                    $errors = $validator->getMessages();
+                    return $this->renderHTML('login.twig', [
+                        'errors' => $errors
+                    ]);
                 }
             }
         }
@@ -29,7 +44,7 @@ class AdminController extends BaseController
         }
     }
 
-    public function logoutUser($request)
+    public function getLogout()
     {
         session_destroy();
         header("Location:login");

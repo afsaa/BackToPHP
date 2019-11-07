@@ -62,17 +62,17 @@ $map->post('saveUser', '/RepasoPHP/users/add', [
     'controller' => 'App\Controllers\UsersController',
     'action' => 'getAddUserAction'
 ]);
-$map->get('login', '/RepasoPHP/login', [
-    'controller' => 'App\Controllers\AdminController',
-    'action' => 'loginUser'
+$map->get('getLogin', '/RepasoPHP/login', [
+    'controller' => 'App\Controllers\AuthController',
+    'action' => 'getLogin'
 ]);
-$map->post('adminLogin', '/RepasoPHP/admin', [
-    'controller' => 'App\Controllers\AdminController',
-    'action' => 'loginUser'
+$map->post('postLogin', '/RepasoPHP/admin', [
+    'controller' => 'App\Controllers\AuthController',
+    'action' => 'postLogin'
 ]);
-$map->get('adminLogout', '/RepasoPHP/logout', [
-    'controller' => 'App\Controllers\AdminController',
-    'action' => 'logoutUser',
+$map->get('getLogout', '/RepasoPHP/logout', [
+    'controller' => 'App\Controllers\AuthController',
+    'action' => 'getLogout',
     'protected' => 'true'
 ]);
 
